@@ -1,6 +1,6 @@
 <template>
     <div id="betting">
-        <div class="bettingLogin flex-box col-2 justify-center align-center">
+        <div v-if="tabKey===''" class="bettingLogin flex-box col-2 justify-center align-center">
             <div>中彩网彩票</div>
             <div class="text-right">
                 <yd-icon name="ucenter"></yd-icon>
@@ -8,96 +8,30 @@
                 <p>注册</p>
             </div>
         </div>
+        <div v-if="tabKey===0" class="hurchasing flex-box col-3 justify-center align-center">
+            <p>购彩大厅</p>
+            <div class="ui-toolbar-right ui-head">
+
+            </div>
+        </div>
         <div class="overflow-y function-box">
-            <yd-slider autoplay="3000">
-                <yd-slider-item>
-                    <a href="http://www.zc070.com/lotteryV3/lottery.do">
-                        <img src="https://yb6.me/img/vhOo/SvyOx8bpV.jpg">
-                    </a>
-                </yd-slider-item>
-                <yd-slider-item>
-                    <a href="http://www.zc070.com/lotteryV3/lottery.do">
-                        <img src="https://yb6.me/img/vhOo/SvyOGNv83.jpg">
-                    </a>
-                </yd-slider-item>
-                <yd-slider-item>
-                    <a href="http://www.zc070.com/lotteryV3/lottery.do">
-                        <img src="https://yb6.me/img/vhOo/SvyO1EI4u.png">
-                    </a>
-                </yd-slider-item>
-            </yd-slider>
-            <yd-rollnotice autoplay="2000">
-                <yd-rollnotice-item><span class="otice"> 公告 </span>尊敬的会员：你好，</yd-rollnotice-item>
-                <yd-rollnotice-item><span class="otice"> 公告 </span>近期发现很多</yd-rollnotice-item>
-                <yd-rollnotice-item><span class="otice"> 公告 </span>不法分子冒充客服</yd-rollnotice-item>
-            </yd-rollnotice>
-            <div class="access flex-box">
-                <div>
-                    <yd-icon name="feedback" size="1.2rem" color="#edb93f"></yd-icon>
-                    <p>存/取钱</p>
-                </div>
-                <div>
-                    <yd-icon name="feedback" size="1.2rem" color="#e62d24"></yd-icon>
-                    <p>投注记录</p>
-                </div>
-                <div>
-                    <yd-icon name="feedback" size="1.2rem" color="#52b653"></yd-icon>
-                    <p>app下载</p>
-                </div>
-                <div>
-                    <yd-icon name="feedback" size="1.2rem" color="#3c8efa"></yd-icon>
-                    <p>在线客服</p>
-                </div>
-            </div>
-            <div class="hall">
-                <p>猜种大厅 <span>LOTTERY</span></p>
-                <div>
-                    <div>
-                        <div><img src="../assets/logo.png"></div>
-                        <p>分分彩</p>
-                    </div>
-                    <div>
-                        <div><img src="../assets/logo.png"></div>
-                        <p>分分彩</p>
-                    </div>
-                    <div>
-                        <div><img src="../assets/logo.png"></div>
-                        <p>分分彩</p>
-                    </div>
-                    <div>
-                        <div><img src="../assets/logo.png"></div>
-                        <p>分分彩</p>
-                    </div>
-                    <div>
-                        <div><img src="../assets/logo.png"></div>
-                        <p>分分彩</p>
-                    </div>
-                    <div>
-                        <div><img src="../assets/logo.png"></div>
-                        <p>分分彩</p>
-                    </div>
-                    <div>
-                        <div><img src="../assets/logo.png"></div>
-                        <p>分分彩</p>
-                    </div>
-                </div>
-            </div>
+            <router-view></router-view>
         </div>
         <!--投注页尾-->
         <div class="send flex-box col-4 justify-center">
-            <div>
+            <div :class="[tabKey===''?'active_betting':'']" @click.capture="$router.push({path:'/betting/bettingHome',query:{}});tabKey=''">
                 <yd-icon name="home-outline" size="1rem"></yd-icon>
                 <p>投注大厅</p>
             </div>
-            <div>
+            <div :class="[tabKey===0?'active_betting':'']" @click.capture="$router.push({path:'/betting/hurchasingHall',query:{}});tabKey=0">
                 <div class="icon icon-app"></div>
                 <p class="icon-top">购彩大厅</p>
             </div>
-            <div>
+            <div :class="[tabKey===1?'active_betting':'']" @click.capture="$router.push({path:'/betting/drawNotice',query:{}});tabKey=1">
                 <div class="icon icon-gift"></div>
                 <p class="icon-top">开奖公告</p>
             </div>
-            <div>
+            <div :class="[tabKey===2?'active_betting':'']" @click.capture="$router.push({path:'/betting/personalCenter',query:{}});tabKey=2">
                 <yd-icon name="ucenter-outline" size="1rem"></yd-icon>
                 <p>个人中心</p>
             </div>
@@ -107,7 +41,16 @@
 
 <script>
     export default {
-        name: "betting"
+        name: "betting",
+        data() {
+            return {
+                msg: 'Welcome to Your Vue.js App',
+                tabKey: '',//导航切换
+            }
+        },
+        created() {
+            this.$router.replace('/betting/bettingHome')// 禁止記住歷史，提供全屏方案的主文件不需要一個歷史紀錄！
+        },
     }
 </script>
 
@@ -133,5 +76,36 @@
     .bettingLogin > * > *:nth-child(2)>*{
         padding: 0 .2rem;
         border-right: 1px solid #ffffff;
+    }
+    .active_betting{
+        color: #cdbf0e;
+    }
+    .ui-head {
+        background: url(../assets/images/goucai_qiehua_03.png) no-repeat;
+        width: 2.25rem;
+        background-size: 2.25rem 1rem;
+        height: 1rem;
+    }
+
+    .ui-toolbar-right {
+        background: url(../assets/images/goucai_qiehua_07.png) no-repeat;
+        width: 2.25rem;
+        background-size: 2.25rem 1rem;
+        height: 1rem;
+        position: relative;
+        display: block;
+    }
+    .hurchasing{
+        text-align: center;
+        line-height: 1.5rem;
+        background-color: #ec2829;
+    }
+    .hurchasing>*:first-child{
+        flex-basis: 80%;
+        -webkit-flex-basis: 80%;
+    }
+    .hurchasing>*:last-child{
+        flex-basis: 15%;
+        -webkit-flex-basis: 15%;
     }
 </style>

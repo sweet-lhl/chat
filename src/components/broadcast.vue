@@ -1,6 +1,10 @@
 <template>
     <div id="broadcast">
-        this is a 直播
+        <div>
+            <video controls autoplay>
+                <source src="http://video.699pic.com/videos/32/50/93/47HK2MpfKwqx1510325093.mp4" type="video/mp4">
+            </video>
+        </div>
     </div>
 </template>
 
@@ -11,5 +15,8 @@
 </script>
 
 <style scoped>
-
+    video{
+        width: 100%;
+        height: auto;
+    }
 </style>

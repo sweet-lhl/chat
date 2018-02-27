@@ -742,12 +742,19 @@
     }
 
     .lottery > *:last-child {
+        width: calc(85%);
         flex-basis: 85%;
         -webkit-flex-basis: 85%;
     }
 
     .lottery > *:last-child > * {
+        text-align: left;
         font-size:0;
+    }
+    .lottery > *:last-child > *:first-child>*{
+        font-size: .5rem;
+        width: 48%;
+        line-height: 1rem;
     }
     .lottery > *:last-child > *>*{
         overflow: hidden;
@@ -761,7 +768,6 @@
     .lottery > *:last-child > *:last-child > * {
         display: inline-block;
         margin: .1rem;
-        padding: .2rem .35rem;
         color: #eeeded;
         font-size: .7rem;
         border-radius: .1rem;

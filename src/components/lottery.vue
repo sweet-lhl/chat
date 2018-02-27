@@ -5,7 +5,7 @@
                 <img class="smallIcons" src="../assets/images/1a.png">
             </div>
             <div>
-                <p class="flex-box col-2">
+                <p>
                     <span>最新开奖667720期</span>
                     <span>距下期开奖还有2分55秒</span>
                 </p>
@@ -28,7 +28,7 @@
                 <img class="smallIcons" src="../assets/images/1a.png">
             </div>
             <div>
-                <p class="flex-box col-2">
+                <p>
                     <span>最新开奖667720期</span>
                     <span>距下期开奖还有2分55秒</span>
                 </p>
@@ -51,7 +51,7 @@
                 <img class="smallIcons" src="../assets/images/1a.png">
             </div>
             <div>
-                <p class="flex-box col-2">
+                <p>
                     <span>最新开奖667720期</span>
                     <span>距下期开奖还有2分55秒</span>
                 </p>
@@ -74,7 +74,7 @@
                 <img class="smallIcons" src="../assets/images/1a.png">
             </div>
             <div>
-                <p class="flex-box col-2">
+                <p>
                     <span>最新开奖667720期</span>
                     <span>距下期开奖还有2分55秒</span>
                 </p>
